@@ -2,6 +2,13 @@
 
 class Theatre{
   findBlocking(theatre, row, seat){
+    if(typeof theatre !== 'object'){
+      throw new TypeError('theatre must be an array');
+    }
+    if(typeof row !== 'number' || typeof seat !== 'number'){
+      throw new TypeError('row and seat must be integers');
+    }
+
     let blocking = 0;
     let column = [];
     for(let i = 0; i < theatre.length; i++){
@@ -22,9 +29,9 @@ class Theatre{
     let height = person.split(' ');
     let heightInInches;
     if(height.length === 4){
-      heightInInches = (height[0] * 12) + height[2];
+      heightInInches = (parseInt(height[0]) * 12) + parseInt(height[2]);
     }else if(height.length === 2){
-      heightInInches = height[0];
+      heightInInches = parseInt(height[0]);
     }
     return heightInInches;
   }
