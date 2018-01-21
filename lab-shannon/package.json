@@ -1,0 +1,14 @@
+{
+  "name": "lab-shannon",
+  "version": "1.0.0",
+  "description": "Find how many people who's view is blocked by a person in a theatre given their heights, implement a priority queue",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest - i --coverage"
+  },
+  "author": "shannon",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^22.1.4"
+  }
+}
