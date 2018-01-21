@@ -10,7 +10,7 @@ class PriorityQueue {
       return null;
     }
   
-    return this._data[0][0];
+    return this._data[0][0].value;
   }
 
   enqueue(data){
@@ -27,8 +27,14 @@ class PriorityQueue {
 
     let parentIndex = this._parentIndex(index);
 
-    if (this._data[parentIndex][0].priority === this._data[index]){
+    if (this._data[parentIndex][0].priority === this._data[index][0].priority){
       // deal with merging arrays and deleting extra spot in _data array
+      this._data[parentIndex].concat(this._data[index]);
+      let lastQueue = this._data.pop();
+      if (this._data.length - 1 > index) {
+        this._data[index] = lastQueue;
+        this._bubbleDown(index);
+      }
     }
 
     if (this._data[parentIndex][0].priority > this._data[index][0].priority) {
@@ -53,12 +59,13 @@ class PriorityQueue {
       return null;
     }
 
-    // add logic to 
-    let max = this._data[0];
-    let lastValue = this._data.pop();
-    if (this._data.length){
-      this._data[0] = lastValue;
-      this._bubbleDown(0);
+    let max = this._data[0].shift().value;
+    if (!this._data[0].length){
+      let lastQueue = this._data.pop();
+      if (this._data.length){
+        this._data[0] = lastQueue;
+        this._bubbleDown(0);
+      }
     }
     return max;
   }
@@ -78,18 +85,18 @@ class PriorityQueue {
 
     if (leftIndex <= this._data.length - 1) {
       // needs to be [0].priority
-      if (this._data[maxIndex] === this._data[leftIndex]){
+      if (this._data[maxIndex][0].priority === this._data[leftIndex][0].priority){
         //merge arrays
       }
-      if (this._data[maxIndex] > this._data[leftIndex]){
+      if (this._data[maxIndex][0].priority > this._data[leftIndex][0].priority){
         maxIndex = leftIndex;
       }
     }
     if (rightIndex <= this._data.length - 1) {
-      if (this._data[maxIndex] === this._data[rightIndex]) {
+      if (this._data[maxIndex][0].priority === this._data[rightIndex][0].priority) {
         //merge arrays
       }
-      if (this._data[maxIndex] > this._data[rightIndex]){
+      if (this._data[maxIndex][0].priority > this._data[rightIndex][0].priority){
         maxIndex = rightIndex;
       }
     }
