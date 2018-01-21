@@ -3,6 +3,13 @@
 const PriorityQueue = require('../lib/priority-queue');
 
 describe('tests for priority-queue.js', () => {
+  test('testing that isEmpty behaves as expected', () => {
+    let testQueue = new PriorityQueue();
+    expect(testQueue.isEmpty()).toEqual(true);
+    testQueue.enqueue({priority: 5, value: 'a'});
+    expect(testQueue.isEmpty()).toEqual(false);
+  });
+
   test('testing that enqueue behaves properly and priority-queue stores highest priority objects in internal array at index 0, also testing that peek returns the highest priority queue in the heap', () => {
     let testQueue = new PriorityQueue();
     expect(testQueue.peek()).toBeNull();
@@ -16,7 +23,6 @@ describe('tests for priority-queue.js', () => {
 
   test('testing that enqueue stores objects with the same priority in the queue order - FIFO', () => {
     let testQueue = new PriorityQueue();
-    expect(testQueue.peek()).toBeNull();
     testQueue.enqueue({priority: 2, value: 'a'});
     testQueue.enqueue({priority: 2, value: 'b'});
     expect(testQueue.peek()).toEqual('a');

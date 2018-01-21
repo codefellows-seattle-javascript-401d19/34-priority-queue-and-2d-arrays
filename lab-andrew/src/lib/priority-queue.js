@@ -14,6 +14,14 @@ class PriorityQueue {
     return this._data[0][0].value;
   }
 
+  isEmpty(){
+    if (!this._data.length) {
+      return true;
+    }
+
+    return false;
+  }
+
   enqueue(data){
     data.order = this._order;
     this._order++;
