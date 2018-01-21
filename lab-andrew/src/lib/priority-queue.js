@@ -15,7 +15,6 @@ class PriorityQueue {
   }
 
   enqueue(data){
-    //data = {priority, value}
     data.order = this._order;
     this._order++;
     const queue = [];
@@ -24,53 +23,53 @@ class PriorityQueue {
     this._bubbleUp(this._data.length - 1);
   }
 
-  _bubbleUp(index) {
+  _bubbleUp(index){
     if (!index)
       return;
 
     let parentIndex = this._parentIndex(index);
 
     if (this._data[parentIndex][0].priority === this._data[index][0].priority){
-      // deal with merging arrays and deleting extra spot in _data array
-      console.log('hey');
-      console.log('before', this._data[parentIndex]);
-      for (let obj of this._data[index]){
-        let insertionPoint = 0;
-        for (let i = 0; i < this._data[parentIndex].length; i++){
-          if (obj.order < this._data[parentIndex][i].order){
-            break;
-          }
-          insertionPoint++;
-        }
-        this._data[parentIndex].splice(insertionPoint, 0, obj);
-      }
-      console.log('after', this._data[parentIndex]);
-      let lastQueue = this._data.pop();
-      if (this._data.length - 1 > index) {
-        this._data[index] = lastQueue;
-        this._bubbleDown(index);
-      }
+      this._mergePriorityArrays(parentIndex, index);
       return;
     }
 
-    if (this._data[parentIndex][0].priority > this._data[index][0].priority) {
+    if (this._data[parentIndex][0].priority > this._data[index][0].priority){
       this._swap(parentIndex, index);
       this._bubbleUp(parentIndex);
     }
   }
 
-  _parentIndex(index) {
+  _parentIndex(index){
     return Math.floor((index - 1) / 2);
   }
 
-  _swap(i, j) {
+  _swap(i, j){
     let temp = this._data[i];
 
     this._data[i] = this._data[j];
     this._data[j] = temp;
   }
 
-  dequeue() {
+  _mergePriorityArrays(destination, source){
+    for (let obj of this._data[source]) {
+      let insertionPoint = 0;
+      for (let i = 0; i < this._data[destination].length; i++) {
+        if (obj.order < this._data[destination][i].order) {
+          break;
+        }
+        insertionPoint++;
+      }
+      this._data[destination].splice(insertionPoint, 0, obj);
+    }
+    let lastQueue = this._data.pop();
+    if (this._data.length > source) {
+      this._data[source] = lastQueue;
+      this._bubbleDown(source);
+    }
+  }
+
+  dequeue(){
     if (!this._data.length){
       return null;
     }
@@ -86,58 +85,50 @@ class PriorityQueue {
     return max;
   }
 
-  _leftChildIndex(index) {
+  _leftChildIndex(index){
     return (2 * index) + 1;
   }
 
-  _rightChildIndex(index) {
+  _rightChildIndex(index){
     return (2 * index) + 2;
   }
 
-  _bubbleDown(index) {
-    //check in here if leftChild priority is equal to rightChild priority and join if true
+  _bubbleDown(index){
     let maxIndex = index;
     let leftIndex = this._leftChildIndex(index);
     let rightIndex = this._rightChildIndex(index);
 
     if (leftIndex <= this._data.length - 1 && rightIndex <= this._data.length - 1){
       if (this._data[leftIndex][0].priority === this._data[rightIndex][0].priority){
-        for (let obj of this._data[rightIndex]) {
-          let insertionPoint = 0;
-          for (let i = 0; i < this._data[leftIndex].length; i++) {
-            if (obj.order < this._data[leftIndex][i].order) {
-              break;
-            }
-            insertionPoint++;
-          }
-          this._data[leftIndex].splice(insertionPoint, 0, obj);
-        }
-        let lastQueue = this._data.pop();
-        if (this._data.length - 1 > rightIndex) {
-          this._data[rightIndex] = lastQueue;
-          this._bubbleDown(rightIndex);
-        }
+        this._mergePriorityArrays(leftIndex, rightIndex);
       }
     }
 
-    if (leftIndex <= this._data.length - 1) {
+    if (leftIndex <= this._data.length - 1){
       if (this._data[maxIndex][0].priority === this._data[leftIndex][0].priority){
-        //merge arrays
+        this._mergePriorityArrays(maxIndex, leftIndex);
       }
+    }
+
+    if (leftIndex <= this._data.length - 1){
       if (this._data[maxIndex][0].priority > this._data[leftIndex][0].priority){
         maxIndex = leftIndex;
       }
     }
-    if (rightIndex <= this._data.length - 1) {
-      if (this._data[maxIndex][0].priority === this._data[rightIndex][0].priority) {
-        //merge arrays
+
+    if (rightIndex <= this._data.length - 1){
+      if (this._data[maxIndex][0].priority === this._data[rightIndex][0].priority){
+        this._mergePriorityArrays(maxIndex, rightIndex);
       }
+    }
+    
+    if (rightIndex <= this._data.length - 1){
       if (this._data[maxIndex][0].priority > this._data[rightIndex][0].priority){
         maxIndex = rightIndex;
       }
     }
 
-    if (maxIndex !== index) {
+    if (maxIndex !== index){
       this._swap(index, maxIndex);
       this._bubbleDown(maxIndex);
     }
