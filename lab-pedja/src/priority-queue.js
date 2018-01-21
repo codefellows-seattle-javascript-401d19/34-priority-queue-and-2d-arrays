@@ -85,6 +85,13 @@ class MinHeap {
     return min;
   }
 
+  peek(){
+    if(this._data.length <= 0)
+      return null;
+    
+    return this._data[0];
+  }
+
 };
 
 module.exports = {

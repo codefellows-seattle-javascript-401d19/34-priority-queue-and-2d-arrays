@@ -48,4 +48,15 @@ describe('priority-queue.js', () => {
       resultQueue.enqueue({});
     }).toThrow();
   });
+
+  test('peek method should return the root of heap without removing it', () => {
+    let resultQueue = new PriorityQueue.MinHeap();
+
+    resultQueue.enqueue({value: "luigi", priority: 5});
+    resultQueue.enqueue({value: "mario", priority: 10});
+    resultQueue.enqueue({value: "yoshi", priority: 1});
+    resultQueue.enqueue({value: "koopa troopa", priority: 2});
+
+    expect(resultQueue.peek().value).toEqual("yoshi");
+  });
 });
