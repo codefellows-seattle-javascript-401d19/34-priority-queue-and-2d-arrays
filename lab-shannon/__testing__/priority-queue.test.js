@@ -9,7 +9,7 @@ describe(`Priority Queue`, () => {
     queue.enqueue({priority: 2, value: 'blah'});
     expect(queue._queue._data[0]).toEqual({priority: 1, value: 'stuff'});
   });
-  test.only(`dequeue method should remove the element with the lowest number priority property`, () => {
+  test(`dequeue method should remove the element with the lowest number priority property`, () => {
     let queue = new priorityQueue();
     queue.enqueue({priority: 4, value: 'thing'});
     queue.enqueue({priority: 1, value: 'stuff'});
