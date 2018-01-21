@@ -82,6 +82,10 @@ class minHeap{
     if(!element.value || !element.priority){
       throw new Error('__ERROR__ element must have a value and a priority');
     }
+    if(typeof element.priority !== 'number'){
+      throw new TypeError('__ERROR__ priority must be a number');
+    }
+
     this._data.push(element);
     this._bubbleUp(this._data.length - 1);
   }

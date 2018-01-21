@@ -8,6 +8,9 @@ class Theatre{
     if(typeof row !== 'number' || typeof seat !== 'number'){
       throw new TypeError('row and seat must be integers');
     }
+    if(row < 0 || seat < 0){
+      throw new TypeError('row and seat must be positive numbers');
+    }
 
     let blocking = 0;
     let column = [];
