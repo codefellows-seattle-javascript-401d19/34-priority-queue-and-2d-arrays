@@ -29,7 +29,10 @@ class PriorityQueue {
 
     if (this._data[parentIndex][0].priority === this._data[index][0].priority){
       // deal with merging arrays and deleting extra spot in _data array
-      this._data[parentIndex].concat(this._data[index]);
+      console.log('hey');
+      console.log('before', this._data[parentIndex]);
+      this._data[parentIndex] = this._data[parentIndex].concat(this._data[index]);
+      console.log('after', this._data[parentIndex]);
       let lastQueue = this._data.pop();
       if (this._data.length - 1 > index) {
         this._data[index] = lastQueue;
@@ -80,6 +83,7 @@ class PriorityQueue {
   }
 
   _bubbleDown(index) {
+    //check in here if leftChild priority is equal to rightChild priority and join if true
     let maxIndex = index;
     let leftIndex = this._leftChildIndex(index);
     let rightIndex = this._rightChildIndex(index);
