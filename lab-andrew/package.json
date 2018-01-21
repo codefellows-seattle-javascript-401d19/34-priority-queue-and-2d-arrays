@@ -1,0 +1,29 @@
+{
+  "name": "lab-andrew",
+  "version": "1.0.0",
+  "description": "priority-queue-and-2d-arrays",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest -i --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ALB37/34-priority-queue-and-2d-arrays.git"
+  },
+  "keywords": [
+    "data-structures",
+    "2d-arrays",
+    "priority-queues",
+    "node"
+  ],
+  "author": "Andrew Bloom",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ALB37/34-priority-queue-and-2d-arrays/issues"
+  },
+  "homepage": "https://github.com/ALB37/34-priority-queue-and-2d-arrays#readme",
+  "dependencies": {
+    "eslint": "^4.16.0",
+    "jest": "^22.1.4"
+  }
+}
