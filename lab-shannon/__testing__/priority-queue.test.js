@@ -18,4 +18,10 @@ describe(`Priority Queue`, () => {
     queue.enqueue({priority: 4, value: 'thing'});
     expect(queue.isEmpty()).toEqual(false);
   });
+  test(`priority queue peek should return the first element in the queue without removing it`, () => {
+    let queue = new priorityQueue();
+    queue.enqueue({priority: 4, value: 'thing'});
+    expect(queue.peek()).toEqual({priority: 4, value: 'thing'});
+    expect(queue.isEmpty()).toEqual(false);
+  });
 });

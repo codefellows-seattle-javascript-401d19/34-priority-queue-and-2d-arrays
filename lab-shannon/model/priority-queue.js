@@ -12,7 +12,7 @@ class priorityQueue{
     }else{
       this._queue.insert(element);
     }
-    console.log(this._queue, `queue`);
+    // console.log(this._queue, `queue`);
   }
   // dequeue(){
   //   this._queue.retrieveMinimum();
@@ -24,9 +24,9 @@ class priorityQueue{
       return false;
     }
   }
-  // peek(){
-  //   this._queue.peek();
-  // }
+  peek(){
+    return this._queue.peek();
+  }
 }
 
 module.exports = priorityQueue;
