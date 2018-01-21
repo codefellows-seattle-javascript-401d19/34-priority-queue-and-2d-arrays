@@ -45,30 +45,33 @@ class minHeap{
     }
   }
 
-  findMinimum(index){
+  findMinimumIndex(index){
     let leftIndex = this._getLeftIndex(index);
     let rightIndex = this._getRightIndex(index);
 
-    let leftMinimum = this._data[index];
-    let rightMinimum = this._data[index];
-    let rootValue = this._data[index];
+    let IndexOfLeftMinimum = index;
+    let IndexOfRightMinimum = index;
+    let rootIndex = index;
 
     if(this._data.length === 1){
-      return rootValue;
+      return rootIndex;
     }
 
     if(leftIndex <= (this._data.length - 1)){
-      leftMinimum = this.findMinimum(leftIndex);
+      IndexOfLeftMinimum = this.findMinimumIndex(leftIndex);
     }
 
     if(rightIndex <= (this._data.length - 1)){
-      rightMinimum = this.findMinimum(rightIndex);
+      IndexOfRightMinimum = this.findMinimumIndex(rightIndex);
     }
 
-    if(leftMinimum < rightMinimum){
-      return leftMinimum;
+    if(this._data[rootIndex].priority < this._data[IndexOfLeftMinimum].priority && this._data[rootIndex].priority < this._data[IndexOfRightMinimum].priority){
+      return rootIndex;
+    }
+    if(this._data[IndexOfLeftMinimum].priority < this._data[IndexOfRightMinimum].priority){
+      return IndexOfLeftMinimum;
     } else {
-      return rightMinimum;
+      return IndexOfRightMinimum;
     }
   }
 
@@ -88,7 +91,7 @@ class minHeap{
       return null;
     }
 
-    let min = this._data[0];
+    let min = this._data.shift();
     return min;
   }
 }

@@ -14,12 +14,11 @@ class priorityQueue{
     }
   }
   dequeue(){
-    console.log(this._queue, `before`);
     let minimum = this._queue.retrieveMinimum();
-    let newMinimum = this._queue.findMinimum(0);
-    console.log(newMinimum, `new minimum`);
-    this._queue._data.shift(newMinimum);
-    console.log(this._queue, `after`);
+    if(this._queue._data.length > 1){
+      let newMinimumIndex = this._queue.findMinimumIndex(0);
+      this._queue._swapValues(newMinimumIndex, 0);
+    }
     return minimum;
   }
   isEmpty(){

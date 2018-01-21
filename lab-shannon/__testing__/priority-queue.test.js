@@ -16,8 +16,10 @@ describe(`Priority Queue`, () => {
     queue.enqueue({priority: 5, value: 'moreThings'});
     queue.enqueue({priority: 2, value: 'blah'});
     expect(queue.dequeue()).toEqual({priority: 1, value: 'stuff'});
-    // expect(queue.dequeue()).toEqual({priority: 2, value: 'blah'});
-    // expect(queue.dequeue()).toEqual({priority: 4, value: 'thing'});
+    expect(queue.dequeue()).toEqual({priority: 2, value: 'blah'});
+    expect(queue.dequeue()).toEqual({priority: 4, value: 'thing'});
+    console.log(`starting last one now`);
+    expect(queue.dequeue()).toEqual({priority: 5, value: 'moreThings'});
   });
   test(`isEmpty method should return true if there are no elements in the queue`, () => {
     let queue = new priorityQueue();
