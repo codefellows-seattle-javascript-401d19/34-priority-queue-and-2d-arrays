@@ -3,6 +3,7 @@
 class PriorityQueue {
   constructor(){
     this._data = [];
+    this._order = 0;
   }
   
   peek(){
@@ -15,6 +16,8 @@ class PriorityQueue {
 
   enqueue(data){
     //data = {priority, value}
+    data.order = this._order;
+    this._order++;
     const queue = [];
     queue.push(data);
     this._data.push(queue);
@@ -31,7 +34,20 @@ class PriorityQueue {
       // deal with merging arrays and deleting extra spot in _data array
       console.log('hey');
       console.log('before', this._data[parentIndex]);
-      this._data[parentIndex] = this._data[parentIndex].concat(this._data[index]);
+      for (let obj of this._data[index]){
+        console.log(obj);
+        let insertionPoint = 0;
+        for (let i = 0; i < this._data[parentIndex].length; i++){
+          console.log(i);
+          if (obj.order < this._data[parentIndex][i].order){
+            break;
+          }
+          insertionPoint++;
+        }
+        console.log(insertionPoint, obj);
+        console.log(this._data[parentIndex]);
+        this._data[parentIndex].splice(insertionPoint, 0, obj);
+      }
       console.log('after', this._data[parentIndex]);
       let lastQueue = this._data.pop();
       if (this._data.length - 1 > index) {
@@ -88,8 +104,18 @@ class PriorityQueue {
     let leftIndex = this._leftChildIndex(index);
     let rightIndex = this._rightChildIndex(index);
 
+    if (leftIndex <= this._data.length - 1 && rightIndex <= this._data.length - 1){
+      if (this._data[leftIndex][0].priority === this._data[rightIndex][0].priority){
+        this._data[leftIndex] = this._data[leftIndex].concat(this._data[rightIndex]);
+        let lastQueue = this._data.pop();
+        if (this._data.length - 1 > rightIndex) {
+          this._data[rightIndex] = lastQueue;
+          this._bubbleDown(rightIndex);
+        }
+      }
+    }
+
     if (leftIndex <= this._data.length - 1) {
-      // needs to be [0].priority
       if (this._data[maxIndex][0].priority === this._data[leftIndex][0].priority){
         //merge arrays
       }
