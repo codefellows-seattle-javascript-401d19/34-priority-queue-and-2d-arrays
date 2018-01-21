@@ -2,7 +2,7 @@
 
 // _getHeight(str) function input can be "72 inches" or "5 feet 2 inches"
 _getHeight = str => {
-  let arrayStr = str.split(' ');
+  const arrayStr = str.split(' ');
   let totalHeight;
   if(arrayStr.includes("feet")){
     totalHeight = parseInt(arrayStr[0] * 12) + parseInt(arrayStr[2]);
@@ -24,17 +24,16 @@ let SEATS = [
 ]
 
 seatsBlocked = (row, col, seats) => {
-  let counter = 0;
-  // find seat location
-  let yourHeight = _getHeight(seats[row][col]);
-  // loop over to see how many people are behind
-  for(let i = row + 1; i <= seats[row][col]; i++){
-    // compare the heights, add counter if smaller
-    if(yourHeight > _getHeight(seats[i][col]))
-      counter ++;
+  let blockedCount = 0;
+  const yourHeight = _getHeight(seats[row][col]);
+
+  for(let i = row + 1; i <= seats.length; i++){
+    const personBehing = _getHeight(seats[i][col]);
+    if(yourHeight > personBehing)
+      blockedCount ++;
   }
   
-  return counter;
+  return blockedCount;
 }
 
 
