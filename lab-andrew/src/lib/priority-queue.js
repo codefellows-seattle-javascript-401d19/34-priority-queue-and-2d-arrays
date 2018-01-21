@@ -35,17 +35,13 @@ class PriorityQueue {
       console.log('hey');
       console.log('before', this._data[parentIndex]);
       for (let obj of this._data[index]){
-        console.log(obj);
         let insertionPoint = 0;
         for (let i = 0; i < this._data[parentIndex].length; i++){
-          console.log(i);
           if (obj.order < this._data[parentIndex][i].order){
             break;
           }
           insertionPoint++;
         }
-        console.log(insertionPoint, obj);
-        console.log(this._data[parentIndex]);
         this._data[parentIndex].splice(insertionPoint, 0, obj);
       }
       console.log('after', this._data[parentIndex]);
@@ -106,7 +102,16 @@ class PriorityQueue {
 
     if (leftIndex <= this._data.length - 1 && rightIndex <= this._data.length - 1){
       if (this._data[leftIndex][0].priority === this._data[rightIndex][0].priority){
-        this._data[leftIndex] = this._data[leftIndex].concat(this._data[rightIndex]);
+        for (let obj of this._data[rightIndex]) {
+          let insertionPoint = 0;
+          for (let i = 0; i < this._data[leftIndex].length; i++) {
+            if (obj.order < this._data[leftIndex][i].order) {
+              break;
+            }
+            insertionPoint++;
+          }
+          this._data[leftIndex].splice(insertionPoint, 0, obj);
+        }
         let lastQueue = this._data.pop();
         if (this._data.length - 1 > rightIndex) {
           this._data[rightIndex] = lastQueue;
