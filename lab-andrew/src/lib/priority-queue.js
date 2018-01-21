@@ -35,6 +35,7 @@ class PriorityQueue {
         this._data[index] = lastQueue;
         this._bubbleDown(index);
       }
+      return;
     }
 
     if (this._data[parentIndex][0].priority > this._data[index][0].priority) {

@@ -21,7 +21,9 @@ describe('tests for priority-queue.js', () => {
     testQueue.enqueue({priority: 2, value: 'b'});
     expect(testQueue.peek()).toEqual('a');
     testQueue.enqueue({priority: 6, value: 'c'});
-    expect(testQueue.peek()).toEqual('b');
+    expect(testQueue.peek()).toEqual('a');
+    testQueue.enqueue({priority: 1, value: 'd'});
+    expect(testQueue.peek()).toEqual('d');
   });
 
   test('testing that dequeue method properly returns highest priority value in the priority-queue and removes that value', () => {
