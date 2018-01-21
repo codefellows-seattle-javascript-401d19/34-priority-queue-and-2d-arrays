@@ -65,10 +65,10 @@ class minHeap{
       IndexOfRightMinimum = this.findMinimumIndex(rightIndex);
     }
 
-    if(this._data[rootIndex].priority < this._data[IndexOfLeftMinimum].priority && this._data[rootIndex].priority < this._data[IndexOfRightMinimum].priority){
+    if(this._data[rootIndex].priority <= this._data[IndexOfLeftMinimum].priority && this._data[rootIndex].priority <= this._data[IndexOfRightMinimum].priority){
       return rootIndex;
     }
-    if(this._data[IndexOfLeftMinimum].priority < this._data[IndexOfRightMinimum].priority){
+    if(this._data[IndexOfLeftMinimum].priority <= this._data[IndexOfRightMinimum].priority){
       return IndexOfLeftMinimum;
     } else {
       return IndexOfRightMinimum;
