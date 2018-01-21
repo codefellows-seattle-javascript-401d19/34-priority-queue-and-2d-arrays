@@ -12,11 +12,16 @@ class priorityQueue{
     }else{
       this._queue.insert(element);
     }
-    // console.log(this._queue, `queue`);
   }
-  // dequeue(){
-  //   this._queue.retrieveMinimum();
-  // }
+  dequeue(){
+    console.log(this._queue, `before`);
+    let minimum = this._queue.retrieveMinimum();
+    let newMinimum = this._queue.findMinimum(0);
+    console.log(newMinimum, `new minimum`);
+    this._queue._data.shift(newMinimum);
+    console.log(this._queue, `after`);
+    return minimum;
+  }
   isEmpty(){
     if(this._queue === null || this._queue._data.length < 1){
       return true;
