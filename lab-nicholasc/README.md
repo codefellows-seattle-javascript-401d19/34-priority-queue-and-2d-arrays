@@ -1,4 +1,4 @@
-# Lab 30 Heaps and Sorting
+# Lab 34 Heaps and height problems
 
 ## Author: Nicholas Carignan
 
@@ -9,7 +9,7 @@
 ## Setup
   clone the repo by typing in
 
-  `git clone https://github.com/ncarignan/30-heaps-and-basic-sorting.git`
+  `git clone https://github.com/ncarignan/34-priority-queue-and-2d-arrays.git`
 
   then install the packages with
 
@@ -20,8 +20,11 @@
    `npm run test`
 
 ## models
-### insertion-sort
-insertion sort exports a function that can be used to sort an array. The function takes in an array and then calls an insertion sort method in place on the array that sorts the values. The function expects the input to be an array or else it will throw an error. This function has an O(n) = nlog(n) where n is the length of the array. At its worst performance it has an O(n) = n^2 if it has to resort the entire array every time which is highly improbable.
+### blocking
+blocking exports a function that finds how many people you are blocking in a theater represented by a 2d array of height values stored as strings. If a row and column are passed in it checks against the heights of the people behind you to see who you are blocking. The function utilizes a helper function that returns the parsed height of an individual in inches.
 
-### max-heap
-max-heap exports a model of a max heap that creates a new MaxHeap with an empty data set when its constructor is called. MaxHeas contain an insert method that inserts a new value in the proper position. It expects a number as its input and will throw an error if it is not a number. It also contains an extractMaximum method that will take the maximum value out of the heap and restructure the heap properly. It also has a peek method that returns the maximum value of the heap.
+### min-heap
+min-heap exports a model of a min heap that creates a new MinHeap with an empty data set when its constructor is called. MinHeas contain an insert method that inserts a new value in the proper position. It expects a number as its input and will throw an error if it is not a number. It also contains an extractMinimum method that will take the minimum value out of the heap and restructure the heap properly. It also has a peek method that returns the minimum value of the heap.
+
+### priority-heap
+priority heap exports a model that creates a new priority heap. It utilizes min heap to store the values in priority order and when it dequeues a value it returns the value.
