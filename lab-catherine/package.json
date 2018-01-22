@@ -1,0 +1,29 @@
+{
+  "name": "lab-catherine",
+  "version": "1.0.0",
+  "description": "Code 401 Lab 34 Priority Queues and 2D Arrays",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest -i --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccloops/34-priority-queue-and-2d-arrays.git"
+  },
+  "keywords": [
+    "priority",
+    "queues",
+    "2d",
+    "arrays"
+  ],
+  "author": "Catherine Looper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ccloops/34-priority-queue-and-2d-arrays/issues"
+  },
+  "homepage": "https://github.com/ccloops/34-priority-queue-and-2d-arrays#readme",
+  "devDependencies": {
+    "eslint": "^4.16.0",
+    "jest": "^22.1.4"
+  }
+}
