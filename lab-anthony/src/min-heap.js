@@ -1,3 +1,12 @@
+'use strict';
+
+class Node{
+  constructor(value, priority){
+    this.value = value;
+    this.priority = priority;
+  }
+}
+
 class MinHeap{
   constructor(){
     this._data = [];
@@ -18,11 +27,13 @@ class MinHeap{
     return (2 * index) + 2;
   }
 
-  insert(value){
-    if(typeof value !== 'number')
-      throw new TypeError('__ERROR__ value should be numeric');
+  //insert now creates a new node with the values passed in.
 
-    this._data.push(value);
+  insert(node){
+    if(typeof node !== 'object')
+      throw new TypeError('__ERROR__ node should be an object');
+
+    this._data.push(new Node(node.value, node.priority));
     this._bubbleUp(this._data.length - 1);
   }
 
@@ -33,13 +44,15 @@ class MinHeap{
     this._data[indexB] = tempSwapValue;
   }
 
+  //bubble up now checks for value of priority in the node.
+
   _bubbleUp(index){
     if(this._getParentIndex(index) === null)
       return;
 
     let parentIndex = this._getParentIndex(index);
 
-    if(this._data[parentIndex] > this._data[index]){
+    if(this._data[parentIndex].priority > this._data[index].priority){
       this._swapValues(parentIndex, index);
       this._bubbleUp(parentIndex);
     }
@@ -51,11 +64,11 @@ class MinHeap{
     let rightIndex = this._getRightIndex(index);
 
     if(leftIndex <= this._data.length - 1){
-      if(this._data[minIndex] > this._data[leftIndex])
+      if(this._data[minIndex].priority > this._data[leftIndex].priority)
         minIndex = leftIndex;
     }
     if(rightIndex <= this._data.length - 1){
-      if(this._data[minIndex] > this._data[rightIndex])
+      if(this._data[minIndex].priority > this._data[rightIndex].priority)
         minIndex = rightIndex;
     }
 
@@ -84,4 +97,4 @@ class MinHeap{
   }
 }
 
-module.exports = MinHeap;
+module.exports = {MinHeap, Node};
