@@ -25,7 +25,6 @@ class Theatre {
       return ((Number(feet) * 12) + Number(inches));
     } else {
     height = str.match(/(\d+)/);
-    // console.log(height);
     return Number(height[0]);
     }
   };
