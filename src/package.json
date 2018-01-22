@@ -1,0 +1,23 @@
+{
+  "name": "34-priority-queue-and-2d-arrays",
+  "version": "1.0.0",
+  "description": "Priority-Queue-Min-Heap",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest -i --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kerrynordstrom/34-priority-queue-and-2d-arrays.git"
+  },
+  "keywords": [
+    "Min-Heap",
+    "Priority-Queue"
+  ],
+  "author": "Kerry Nordstrom",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kerrynordstrom/34-priority-queue-and-2d-arrays/issues"
+  },
+  "homepage": "https://github.com/kerrynordstrom/34-priority-queue-and-2d-arrays#readme"
+}
