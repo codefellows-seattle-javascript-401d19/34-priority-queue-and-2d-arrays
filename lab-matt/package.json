@@ -1,0 +1,15 @@
+{
+  "name": "lab-matt",
+  "version": "1.0.0",
+  "description": "Lab 34 code fellows, priority queue and 2d arrays",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest -i --coverage"
+  },
+  "author": "Matthew LeBlanc",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^4.16.0",
+    "jest": "^22.1.4"
+  }
+}
