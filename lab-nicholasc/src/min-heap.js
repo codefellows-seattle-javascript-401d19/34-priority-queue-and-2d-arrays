@@ -21,11 +21,11 @@ class MinHeap{
   }
 
   // lg n
-  insert(value){
-    if(typeof value !== 'number')
-      throw new TypeError('__ERROR__ value should be numeric');
+  insert(obj){
+    if(typeof obj.priority !== 'number')
+      throw new TypeError('__ERROR__ obj priority should be numeric');
 
-    this._data.push(value);
+    this._data.push(obj);
     this._bubbleUp(this._data.length -1);
   }
 
@@ -41,7 +41,7 @@ class MinHeap{
     if(parentIndex === null)
       return;
 
-    if(this._data[parentIndex] > this._data[index]){
+    if(this._data[parentIndex].priority > this._data[index].priority){
       this._swapValues(parentIndex, index);
       this._bubbleUp(parentIndex);
     }
@@ -53,11 +53,11 @@ class MinHeap{
     let rightIndex = this._getRightIndex(index);
 
     if(leftIndex <= this._data.length -1){
-      if(this._data[maxIndex] > this._data[leftIndex])
+      if(this._data[maxIndex].priority > this._data[leftIndex].priority)
         maxIndex = leftIndex;
     }
     if(rightIndex <= this._data.length -1){
-      if(this._data[maxIndex] < this._data[rightIndex])
+      if(this._data[maxIndex].priority < this._data[rightIndex].priority)
         maxIndex = rightIndex;
     }
 
