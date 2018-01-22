@@ -1,15 +1,12 @@
 # Code Fellows 401
-## Notes + React
-This is a note list saver thing built on ReactJS. 
+## Priority Queue + 2D Arrays in Movie Theatres
 
-## Motivation
-I want to build beautiful things (this one doesn't count as a beautiful thing).
 
 ## Description
-This app lets you create and save notes for a browser window session. 
+This is a priority queue and a solver to figure out how many people are obstructed in a movie theatre based on a set seating assignment in a 2D array. 
 
 ## Tech Used
-React, Babel, Webpack, SASS
+Javascript, Jest for Testing
 
 ## Components:
 - NoteForm : this allows a user to complete a note
@@ -20,6 +17,25 @@ React, Babel, Webpack, SASS
 - Landing : this is the main landing page.
 - Modal : this is a pop up that initiates when a user clicks to edit a note. 
 
+## Movie Theatre
+### Assume the theatre is full always.
+### access seats via `[row][col]`
+### Returns how many people are behind in seat that was inputted into the function
+
+### Theatre layout - 2D Array
+```javascript
+let SEATS = [
+  [ '1 feet 11 inches', '4 feet 8 inches', '2 feet 10 inches', '3 feet 5 inches', '2 inches', '3 inches', '11 inches' ],
+  [ '5 feet 10 inches', '9 inches', '3 feet 5 inches', '3 inches', '9 inches', '1 feet 0 inches', '0 inches' ],
+  [ '0 feet 5 inches', '5 feet 9 inches', '6 feet 1 inches', '1 inches', '1 inches', '5 feet 3 inches', '3 feet 5 inches' ],
+  [ '1 inches', '0 feet 11 inches', '2 feet 5 inches', '5 feet 6 inches', '6 feet 6 inches', '6 inches', '5 feet 11 inches' ],
+  [ '10 inches', '11 inches', '3 inches', '5 feet 2 inches', '9 inches', '4 inches', '1 feet 10 inches' ],
+  [ '2 feet 10 inches', '11 inches', '7 inches', '2 feet 9 inches', '0 inches', '9 inches', '0 feet 2 inches' ],
+  [ '3 inches', '1 inches', '5 feet 5 inches', '6 inches', '2 inches', '5 feet 7 inches', '8 inches' ]
+]
+
+```
+
 ## Tests
 ### Dashboard
 A test runs to make sure the dashboard has initial state.
@@ -28,31 +44,10 @@ A test runs to make sure the dashboard has initial state.
 A test runs to make sure the note form has initial state. 
 
 ## Dependencies
-- Regular Deps
-  - babel-core: ^6.26.0,
-  - babel-loader: ^7.1.2,
-  - babel-plugin-transform-object-rest-spread: ^6.26.0,
-  - babel-preset-env: ^1.6.1,
-  - babel-preset-es2015: ^6.24.1,
-  - babel-preset-react: ^6.24.1,
-  - css-loader: ^0.28.8,
-  - eslint-plugin-react: ^7.5.1,
-  - extract-text-webpack-plugin: ^3.0.2,
-  - html-webpack-plugin: ^2.30.1,
-  - node-sass: ^4.7.2,
-  - react: ^16.2.0,
-  - react-dom: ^16.2.0,
-  - react-router-dom: ^4.2.2,
-  - resolve-url-loader: ^2.2.1,
-  - sass-loader: ^6.0.6,
-  - superagent: ^3.8.2,
-  - uuid: ^3.1.0,
-  - webpack: ^3.10.0,
-  - webpack-dev-server: ^2.10.1
+- 
 
 - devDependencies
-  - enzyme: ^3.3.0,
-  - enzyme-adapter-react-16: ^1.1.1,
+  - 
   - jest: ^22.0.5
 
 ## License
