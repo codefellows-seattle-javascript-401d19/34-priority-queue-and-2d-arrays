@@ -14,32 +14,26 @@ class MovieTheater {
     }
   }
 
-  numberOfBlockedPeople(seat, row, theater) {
-    if(typeof seat !== 'number' || typeof row !== 'number') {
-      throw new TypeError('seat and row must be numbers');
+  numberOfBlockedPeople(theater, row, column) {
+    if(typeof row !== 'number' || typeof column !== 'number') {
+      throw new TypeError('row and column must be numbers');
     }
 
     if(typeof theater !== 'object') {
       throw new TypeError('theater must be an array');
     }
 
-    if(seat < 0 || row < 0) {
-      throw new Error('seat and row must be positive numbers');
+    if(row < 0 || column < 0) {
+      throw new Error('row and column must be positive numbers');
     }
 
     let numberBlocked = 0;
-    const column = [];
+    const heights = theater.map(height => {
+      return this._convertFeetToInches(height[column]);
+    });
 
-    for(let i = 0; i < theater.length; i++) {
-      column.push(theater[i][seat]);
-    }
-
-    for(let i = 0; i < column.length; i++) {
-      column[i] = this._convertFeetToInches(column[i]);
-    }
-
-    for(let i = row + 1; i < column.length; i++) {
-      if(column[row] > column[i]) {
+    for(let i = row; i < heights.length; i++) {
+      if(heights[i] < heights[row]) {
         numberBlocked++;
       }
     }
