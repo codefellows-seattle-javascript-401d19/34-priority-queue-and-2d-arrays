@@ -53,30 +53,19 @@ describe('priority-queue-fifo.js', () => {
         {priority: 5, values: ['first 5']},
       ]);
     });
-    
-    test('Dequeueing should work with a more complicated queue', () => {
-      testQueue.enqueue({priority: 6, value: 'first 6'});
-      testQueue.enqueue({priority: 7, value: 'first 7'});
-      testQueue.enqueue({priority: 7, value: 'second 7'});
-      testQueue.enqueue({priority: 7, value: 'third 7'});
+  
+    test('Dequeueing should work a priority with a single value', () => {
       testQueue.enqueue({priority: 1, value: 'first 1'});
-      testQueue.enqueue({priority: 6, value: 'second 6'});
-      testQueue.enqueue({priority: 7, value: 'fourth 7'});
-      testQueue.enqueue({priority: 7, value: 'fifth 7'});
-      testQueue.enqueue({priority: 7, value: 'sixth 7'});
-      testQueue.enqueue({priority: 1, value: 'second 1'});
       expect(testQueue.dequeue()).toEqual('first 1');
+      expect(testQueue._dataMap[1]).toBeUndefined();
     });
 
     test('Dequeueing should work with a more complicated queue', () => {
       testQueue.enqueue({priority: 6, value: 'first 6'});
       testQueue.enqueue({priority: 7, value: 'first 7'});
       testQueue.enqueue({priority: 8, value: 'first 8'});
-      testQueue.enqueue({priority: 9, value: 'first 9'});
       testQueue.enqueue({priority: 10, value: 'first 10'});
       testQueue.enqueue({priority: 9, value: 'second 9'});
-      testQueue.enqueue({priority: 2, value: 'third 2'});
-      testQueue.enqueue({priority: 2, value: 'fourth 2'});
       testQueue.enqueue({priority: 1, value: 'first 1'});
       expect(testQueue.dequeue()).toEqual('first 1');
     });

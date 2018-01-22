@@ -26,7 +26,7 @@ After installing dependencies, run `npm test` to run tests. Tests verify that th
 
 ### `priority-queue.js`
 
-*NOTE:* This priority queue will always dequeue a value with the highest priority, but that doesn't necesarrily mean it will dequeue the first enqueued item with that priority, in the case where there are multiple items with the same priority.
+*NOTE:* This priority queue will always dequeue a value with the highest priority, but that doesn't necessarily mean it will dequeue the first enqueued item with that priority, in the case where there are multiple items with the same priority. If you need that functionality, use `priority-queue-fifo.js`.
 
 #### Constructor
 
@@ -79,6 +79,14 @@ Takes no arguments, returns true if the queue is empty, false otherwise.
 heap.isEmpty();
 // returns false
 ```
+
+### `priority-queue-fifo.js`
+
+This module has all of the same methods as `priority-queue.js`, except this class will maintain the order of duplicate priorities. If item A with priority X is added before item B with priority X, item A will always be dequeued before item B. 
+
+In this class, each priority value that is added gets a node, and if values with the same priority are added they are pushed into that node's values array, ensuring that values with a common priority are dequeued in a FIFO-esque manner.
+
+This implementation does not increase the worst case time complexity of any operation, and in many instances actually makes the operations' best cases constant time instead of logarithmic time.
 
 
 ### `movie.js`
