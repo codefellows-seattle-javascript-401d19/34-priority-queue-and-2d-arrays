@@ -26,8 +26,6 @@ class PriorityQueue {
     if (object.priority === undefined)
       throw new TypeError('__ERROR__ priority needs to be a number');
       
-
-      
     this._data.push(object);
     this._bubbleUp(this._data.length -1);
   }
