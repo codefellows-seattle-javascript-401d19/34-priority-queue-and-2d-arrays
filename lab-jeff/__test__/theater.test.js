@@ -1,6 +1,6 @@
 'use strict';
 
-const Theater = '../theater';
+const tallCheck = require('../theater').tallCheck;
 
 let seats = [
 	['1 feet 11 inches', '4 feet 8 inches', '2 feet 10 inches', '3 feet 5 inches', '2 inches', '3 inches', '11 inches'],
@@ -30,6 +30,9 @@ let seats = [
 
 describe('theater.js', () => {
 	test('tall check should return the number of people the input row and column blocks', () => {
-		expect(Theater.tallCheck(seats, 0, 0)).toEqual(4);
+		expect(tallCheck(seats, 0, 0)).toEqual(4);
+		expect(tallCheck(seats, 0, 4)).toEqual(2);
+		expect(tallCheck(seats, 2, 1)).toEqual(4);
+		expect(tallCheck(seats, 6, 0)).toEqual(0);
 	});
 });
