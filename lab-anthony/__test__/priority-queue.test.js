@@ -19,4 +19,8 @@ describe('testing priority queue', () => {
   test('priority queue should return the second lowest priority value when returning dequeue for the second time', () => {
     expect(testPriorityQueue.dequeue()).toEqual({value: 'pudding', priority: 2});
   });
+
+  test('priority queue should return the third lowest priority value when returning dequeue for the third time', () => {
+    expect(testPriorityQueue.dequeue()).toEqual({value: 'bacon', priority: 3});
+  });
 });

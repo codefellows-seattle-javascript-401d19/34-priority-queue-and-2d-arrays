@@ -44,7 +44,7 @@ class MinHeap{
     this._data[indexB] = tempSwapValue;
   }
 
-  //bubble up now checks for value of priority in the node.
+  //bubble now checks for value of priority in the node.
 
   _bubbleUp(index){
     if(this._getParentIndex(index) === null)
