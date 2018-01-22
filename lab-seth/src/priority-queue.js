@@ -83,7 +83,12 @@ class PriorityQueue {
     if (this._data.length <= 0)
       return null;
 
-    return this._data[0];
+    return this._data[0].value;
+  }
+
+  isEmpty() {
+    return this._data.length <= 0 ? true: false;
   }
 };
+
 module.exports = PriorityQueue;

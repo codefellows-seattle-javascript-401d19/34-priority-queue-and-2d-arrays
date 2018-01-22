@@ -86,12 +86,18 @@ describe('Priority Queue', () => {
     expect(mockPriorityQueue._data[4].priority).toEqual(4);
     expect(mockPriorityQueue._data[5].priority).toEqual(3);
 
-    expect(mockPriorityQueue.peek()).toEqual({priority: 1, value: 'testValue1'});
+    expect(mockPriorityQueue.peek()).toEqual('testValue1');
   });
 
   test('Method Peek() should return null if Priority Queue is empty', () => {
     const mockPriorityQueue = new PriorityQueue();
 
     expect(mockPriorityQueue.peek()).toEqual(null);
+  });
+
+  test('Method isEmpty() should return true if Priority Queue is empty', () => {
+    const mockPriorityQueue = new PriorityQueue();
+
+    expect(mockPriorityQueue.isEmpty()).toEqual(true);
   });
 });
