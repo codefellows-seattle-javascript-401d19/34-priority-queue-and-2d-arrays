@@ -1,0 +1,14 @@
+{
+  "name": "lab-rob",
+  "version": "1.0.0",
+  "description": "## Lab 34: Priority Queues and 2D Arrays ### 1/21/18",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest -i --coverage",
+    "watch": "jest -i --coverage --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {}
+}
