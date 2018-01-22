@@ -17,36 +17,38 @@ myQueue.enqueue({ priority: -100, value: '-100'});
 myQueue.enqueue({ priority: 8, value: 'eight'});
 myQueue.enqueue({ priority: 100, value: '100'});
 
-test('peek returns the lowest priority value but doesn\t remove it', () => {
-  expect(myQueue.peek()).toEqual({ priority: -100, value: '-100'});
-  expect(myQueue.peek()).toEqual({ priority: -100, value: '-100'});
-  expect(myQueue.peek()).toEqual({ priority: -100, value: '-100'});
-});
-test('priority queue focuses on lowest number as highest priority', () => {
-  expect(myQueue.dequeue().priority).toEqual(-100);
-  expect(myQueue.dequeue().priority).toEqual(0);
-  expect(myQueue.dequeue().priority).toEqual(1);
-  expect(myQueue.dequeue().priority).toEqual(2);
-  expect(myQueue.dequeue().priority).toEqual(3);
-  expect(myQueue.dequeue().priority).toEqual(4);
-  expect(myQueue.dequeue().priority).toEqual(5);
-  expect(myQueue.dequeue().priority).toEqual(6);
-  expect(myQueue.dequeue().priority).toEqual(7);
-  expect(myQueue.dequeue().priority).toEqual(8);
-  expect(myQueue.dequeue().priority).toEqual(9);
-  expect(myQueue.dequeue().priority).toEqual(100);
-});
-test('expect an empty priority queue to return null with .dequeue()', () => {
-  expect(myQueue.dequeue()).toEqual(null);
-});
-test('expect an empty priority queue to return null with peek()', () => {
-  expect(myQueue.peek()).toEqual(null);
-});
-test('expect an error if the object doesn\'t have a priority or value', () => {
-  expect(() => {
-    myQueue.enqueue({ priority: 0});
-  }).toThrow();
-  expect(() => {
-    myQueue.enqueue({ value: 'zero'});
-  }).toThrow();
+describe('priority-queue.js', () => {
+  test('peek returns the lowest priority value but doesn\t remove it', () => {
+    expect(myQueue.peek()).toEqual({ priority: -100, value: '-100'});
+    expect(myQueue.peek()).toEqual({ priority: -100, value: '-100'});
+    expect(myQueue.peek()).toEqual({ priority: -100, value: '-100'});
+  });
+  test('priority queue focuses on lowest number as highest priority', () => {
+    expect(myQueue.dequeue().priority).toEqual(-100);
+    expect(myQueue.dequeue().priority).toEqual(0);
+    expect(myQueue.dequeue().priority).toEqual(1);
+    expect(myQueue.dequeue().priority).toEqual(2);
+    expect(myQueue.dequeue().priority).toEqual(3);
+    expect(myQueue.dequeue().priority).toEqual(4);
+    expect(myQueue.dequeue().priority).toEqual(5);
+    expect(myQueue.dequeue().priority).toEqual(6);
+    expect(myQueue.dequeue().priority).toEqual(7);
+    expect(myQueue.dequeue().priority).toEqual(8);
+    expect(myQueue.dequeue().priority).toEqual(9);
+    expect(myQueue.dequeue().priority).toEqual(100);
+  });
+  test('expect an empty priority queue to return null with .dequeue()', () => {
+    expect(myQueue.dequeue()).toEqual(null);
+  });
+  test('expect an empty priority queue to return null with peek()', () => {
+    expect(myQueue.peek()).toEqual(null);
+  });
+  test('expect an error if the object doesn\'t have a priority or value', () => {
+    expect(() => {
+      myQueue.enqueue({ priority: 0});
+    }).toThrow();
+    expect(() => {
+      myQueue.enqueue({ value: 'zero'});
+    }).toThrow();
+  });
 });
