@@ -1,6 +1,6 @@
 'use strict';
 
-class Element {
+class PriorityQueue {
   constructor(value, priority) {
     this.value = value;
     this.priority = priority;
@@ -31,7 +31,7 @@ class MinHeap {
     if(typeof node !== 'object' || node.value === undefined || node.priority === undefined )
       throw new TypeError('node must be an object, node.value and node.priority must not be undefined');
 
-    this._data.push(new Element(node.value, node.priority));
+    this._data.push(new PriorityQueue(node.value, node.priority));
     this._bubbleUp(this._data.length - 1);
   }
 
@@ -94,4 +94,4 @@ class MinHeap {
 
 }
 
-module.exports = {Element, MinHeap};
+module.exports = {PriorityQueue, MinHeap};
