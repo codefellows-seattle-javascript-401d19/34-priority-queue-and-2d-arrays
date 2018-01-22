@@ -4,7 +4,7 @@ const MinHeap = require('./min-heap');
 
 class PriorityQueue {
   constructor(){
-    this.heap = new MinHeap();
+    this.heap = new MinHeap.MinHeap();
   }
 
   enqueue(node){
@@ -12,7 +12,7 @@ class PriorityQueue {
   }
 
   dequeue(){
-    this.heap.extractMininum();
+    return this.heap.extractMininum();
   }
 }
 
