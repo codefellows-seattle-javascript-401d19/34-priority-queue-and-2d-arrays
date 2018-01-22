@@ -26,7 +26,11 @@ The priority queue is a data structure which is based on a min-heap. This struct
 
 #### PriorityQueue.enqueue:
 
+The enqueue method takes an object with a priority property and a value property. Each input is assigned an order number property which is taken from the class (the class's order number is incremented with each enqueue call). This will push that object into a queue array and then push that to the end of the internal data array. Then based on the priority property, that will bubble up to the appropriate place in the heap. If during bubbling up, any nodes with the same priority are found, the arrays in those nodes will be merged according to the order values assigned at the beginning of the enqueue method. This is done in order to preserve a FIFO ordering for objects with the same priority. The worst case time complexity is O(n); potentially a priority queue could contain all the same priority, and that array would need to be looped through in its entirety. Space complexity should be constant. However, the average complexity should be O(log(n)), assuming most objects in the priority queue have different priority numbers. In the future, this data structure could be altered to use a min heap to internally store objects with the same priority in order to improve the enqueue and dequeue methods to have a better time complexity.
+
 #### PriorityQueue.dequeue:
+
+The dequeue method will return the next value in the queue, simultaneously removing it. If that empties the queue inside the top node, that node is replaced with the last node in the heap, which is then bubbled down. The bubbling down will merge any nodes that have the same priority. The time and space complexity will be comparable to the enqueue method here.
 
 #### PriorityQueue.peek:
 
