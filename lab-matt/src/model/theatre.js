@@ -2,7 +2,7 @@
 
 class Theatre {
   constructor() {
-    let SEATS = [
+    this.SEATS = [
       [ '1 feet 11 inches', '4 feet 8 inches', '2 feet 10 inches', '3 feet 5 inches', '2 inches', '3 inches', '11 inches' ],
       [ '5 feet 10 inches', '9 inches', '3 feet 5 inches', '3 inches', '9 inches', '1 feet 0 inches', '0 inches' ],
       [ '0 feet 5 inches', '5 feet 9 inches', '6 feet 1 inches', '1 inches', '1 inches', '5 feet 3 inches', '3 feet 5 inches' ],
@@ -14,16 +14,35 @@ class Theatre {
   }
 
   parseHeight(str) {
-    let height
-    if (str.match(feet)) {
+    let height;
+    let feet;
+    let inches;
+
+    if (str.match('feet')) {
       height = str.match(/(\d+) \D+ (\d+)/);
       feet = height[1];
       inches = height[2];
-      return ((feet * 12) + inches);
+      return ((Number(feet) * 12) + Number(inches));
     } else {
-      
+    height = str.match(/(\d+)/);
+    // console.log(height);
+    return Number(height[0]);
     }
   };
+
+  howManyBlocking(row, col) {
+    let theatre = this.SEATS;
+    let personFound = this.parseHeight(theatre[row][col]);
+    let count = 0;
+
+    while (col < theatre[row].length) {
+      if (this.parseHeight(theatre[row][col]) < personFound) {
+        count ++;
+      }
+      col ++;
+    }
+    return count;
+  }
 }
 
 module.exports = Theatre;
