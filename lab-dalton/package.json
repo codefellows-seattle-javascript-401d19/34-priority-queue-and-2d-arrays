@@ -1,0 +1,16 @@
+{
+  "name": "lab-dalton",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest -i --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^4.16.0",
+    "jest": "^22.1.4"
+  }
+}
