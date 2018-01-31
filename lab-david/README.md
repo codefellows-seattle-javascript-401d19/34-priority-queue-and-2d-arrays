@@ -8,14 +8,6 @@ This is a priority queue and a solver to figure out how many people are obstruct
 ## Tech Used
 Javascript, Jest for Testing
 
-## Components:
-- NoteForm : this allows a user to complete a note
-- NoteList : this tracks all the notes made
-- NoteItem : this is for each item
-- App : this controls the application
-- Dashboard : This controls the routing for the routes.
-- Landing : this is the main landing page.
-- Modal : this is a pop up that initiates when a user clicks to edit a note. 
 
 ## Movie Theatre
 ### Assume the theatre is full always.
@@ -47,8 +39,8 @@ A test runs to make sure the note form has initial state.
 - 
 
 - devDependencies
-  - 
-  - jest: ^22.0.5
+  - eslint
+  - jest
 
 ## License
 MIT License

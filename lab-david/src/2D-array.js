@@ -1,25 +1,35 @@
 'use strict';
 
+// assumption - theatre always full
+
 class Theatre{
-  constructor(row, seat){
-    // check to make sure theatre is an array
+  constructor(seats, row, col){
+    let currentHeight = heightChecker(seats, row, col);
+    let counter = 0;
 
-    // check to make sure things are integers
+    for(let i = row + 1; i < seats.length; i++){
+      if (heightChecker(seats, i, col) < currentHeight){
+        counter++;
+      }
+    }
 
-    // make sure positive numbers
+    return counter;
+    
+    
+    _heightChecker(seats, row, col){
+      let string = seats[row][col];
+      let words = string.split(" ");
 
-    // run for loop over theatre column at row #
-    // add counter each time
-    // return counter
+      let feet = 0;
+      if (string.includes("feet")){
+        feet = parseInt(words[0], 10)
+      }
 
+      let index = words.length - 2;
+      let inches = parseInt(words[index], 10)
+
+      return inches + 12 * feet
+
+      }
   }
 }
-
-_getInches(heightNumber){
-  let height = heightNumber.split(' ');
-  let heightInInches;
-  if(height.length < 2)
-    return height[0]
-  else 
-    return ( (height[0] x 12) + height[2] );
-  }
