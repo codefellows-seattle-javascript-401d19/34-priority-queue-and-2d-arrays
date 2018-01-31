@@ -1,6 +1,6 @@
 'use strict';
 
-let seats = ['1 feet 11 inches', '4 feet 8 inches', '2 feet 10 inches', '3 feet 5 inches', '2 inches', '3 inches', '11 inches'];
+let seats = [['1 feet 11 inches', '4 feet 8 inches'],['2 feet 10 inches', '3 feet 5 inches'], ['2 inches', '3 inches', '11 inches']];
 
 const conversionToInteger = (string) => {
   let heightArr = string.split(' ');
@@ -12,4 +12,15 @@ const conversionToInteger = (string) => {
   }
   return height;
 };
-conversionToInteger(seats[0]);
+console.log(conversionToInteger(seats[0][0]));
+
+const personsBlocked = (seats, row, col) => {
+  let blocked = [];
+  const blockingPersonHeight = conversionToInteger(seats[row][col]);
+
+  seats.map((ele, i) => ( (blockingPersonHeight > conversionToInteger(ele[i][col])) ? blocked.push(conversionToInteger(ele[i][col])) : null )
+  
+  return blocked;
+};
+
+console.log(blocked);
