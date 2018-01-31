@@ -18,9 +18,12 @@ const personsBlocked = (seats, row, col) => {
   let blocked = [];
   const blockingPersonHeight = conversionToInteger(seats[row][col]);
 
-  seats.map((ele, i) => ( (blockingPersonHeight > conversionToInteger(ele[i][col])) ? blocked.push(conversionToInteger(ele[i][col])) : null )
-  
+  for (let i = row + 1; i < seats.length; i++) {
+    if (blockerHeight > conversionToInteger(seats[i][col])) {
+      blocked.push(conversionToInteger(seats[i][col])
+    }
+  }
+ 
   return blocked;
 };
-
 console.log(blocked);
